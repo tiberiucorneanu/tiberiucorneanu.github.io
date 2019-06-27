@@ -1,0 +1,60 @@
+<!--reparare temporala scrollbar-->
+<div style="height: 615px;overflow-y: scroll;">
+    <!--Mesajul de intampinare-->
+    <div class="card" style=" text-align: center;">
+      <div class="card-body">
+        <h5 class="card-title" style=" text-align: center;">Editeaza utilizatorul {{userId.email}}</h5>
+        <p class="card-text" style="text-align: center;">Pe baza formularuluiului de mai jos puteti edita utilizatorul.</p>
+      </div>
+    </div>
+<div class="center">
+<form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label><b>Nume</b></label>
+        <input type="text" class="form-control"  value="{{userId.firstName}}" [(ngModel)] = "userId.firstName" name = "firstName">
+      </div>
+      <div class="form-group col-md-6">
+        <label><b>Prenume</b></label>
+        <input type="prenumeUtilizator" class="form-control"  value="{{userId.lastName}}" [(ngModel)] = "userId.lastName" name = "lastName">
+      </div>
+    <!--inchide linia 2-->  
+    </div>  
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label><b>Email</b></label>
+          <input type="emaiUtilizator" class="form-control"  value="{{userId.email}}" [(ngModel)] = "userId.email" name = "email">
+        </div>
+        <div class="form-group col-md-6">
+          <label><b>Grupa si seria</b></label>
+          <input type="grupaSeriaUtilizator" class="form-control"  value="{{userId.grupaSerie}}" [(ngModel)] = "userId.grupaSerie" name = "grupaSerie">
+        </div>
+    <!--inchide linia 2-->
+    </div>  
+    <div class="form-group ">
+        <label><b>Descriere</b></label>
+        <textarea id="form10" class="md-textarea form-control"  value="{{userId.description}}" [(ngModel)] = "userId.description" name="description" rows="3"></textarea>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label><b>Parola</b></label>
+          <input type="password" class="form-control" [(ngModel)] = "userId.password" name="password">
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Repeta Parola</b></label>
+            <input type="password" class="form-control" [(ngModel)] = "userId.password" name="password">
+        </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" (click) = "checkBox()">
+        <label class="form-check-label" for="gridCheck">
+          Sunt de acord sa creez o noua masina virtuala.
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" routerLink="/utilizatori" [disabled]="!booleanCheckBox" (click) = "updateUser(userId)">Actualizează</button>
+  </form>
+</div>
+</div>

@@ -1,0 +1,100 @@
+<!--reparare temporala scrollbar-->
+<div style="height: 615px;overflow-y: scroll;">
+    <!--Mesajul de intampinare-->
+    <div class="card" style=" text-align: center;">
+      <div class="card-body">
+        <h5 class="card-title" style=" text-align: center;">Creaza un nou utilizator</h5>
+        <p class="card-text" style="text-align: center;">Pe baza formularuluiului de mai jos puteti crea un nou utilizator.</p>
+      </div>
+    </div>
+<div class="center">
+<form name="form" [formGroup]="form">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nameUser">Nume</label>
+        <input type="text" class="form-control" formControlName="nameUser" [ngClass]="{'is-invalid':form.get('nameUser').touched 
+        && form.get('nameUser').invalid}"  placeholder="Popescu" [(ngModel)] = "user.firstName" name = "firstName">
+        <div *ngIf="form.get('nameUser').touched && form.get('nameUser').invalid" class="invalid-feedback">
+            <div *ngIf="form.get('nameUser').errors.required">Necesar un nume!</div>
+            <div *ngIf="form.get('nameUser').errors.minlength">Necesita un nume de minim 3 caractere</div>
+            <div *ngIf="form.get('nameUser').errors.pattern">Necesita un nume ce poate contine numai caractere mici sau mari!</div>
+          </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="prenumeUser">Prenume</label>
+        <input type="text" class="form-control" formControlName="prenumeUser" [ngClass]="{'is-invalid':form.get('prenumeUser').touched 
+        && form.get('prenumeUser').invalid}"  placeholder="Popescu"  placeholder="Ion" [(ngModel)] = "user.lastName" name = "lastName">
+        <div *ngIf="form.get('prenumeUser').touched && form.get('prenumeUser').invalid" class="invalid-feedback">
+            <div *ngIf="form.get('prenumeUser').errors.required">Necesar un prenume!</div>
+            <div *ngIf="form.get('prenumeUser').errors.minlength">Necesita un prenume de minim 3 caractere</div>
+            <div *ngIf="form.get('prenumeUser').errors.pattern">Necesita un prenume ce poate contine numai caractere mici sau mari!</div>
+          </div>
+      </div>
+    </div>  
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{'is-invalid':form.get('email').touched 
+            && form.get('email').invalid}" placeholder="popescu_ion@etti.upb.ro" [(ngModel)] = "user.email" name = "email"/>
+            <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
+                <div *ngIf="form.get('email').errors.required">Necesar un email</div>
+                <div *ngIf="form.get('email').errors.email">Email trebuie sa fie unul valid de forma xxx@xxx.xx</div>
+            </div>
+        
+        </div>
+        <div class="form-group col-md-6">
+          <label for="grupaSerie"><b>Grupa si seria</b></label>
+          <input type="text" class="form-control" formControlName="grupaSerie" [ngClass]="{'is-invalid':form.get('grupaSerie').touched 
+          && form.get('grupaSerie').invalid}" placeholder="443D" [(ngModel)] = "user.grupaSerie" name ="grupaSerie"/>
+          <div *ngIf="form.get('grupaSerie').touched && form.get('grupaSerie').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('grupaSerie').errors.required">Necesar grupa si seria!</div>
+              <div *ngIf="form.get('grupaSerie').errors.pattern">Necesita grupa si seria pot contine numai litere mari si numere!</div>
+            </div>
+        </div>
+    </div>  
+
+
+
+    <div class="form-group ">
+        <label><b>Descriere</b></label>
+        <textarea id="form10" class="md-textarea form-control"  placeholder="Descriere utilizator..." rows="3" [(ngModel)] = "user.description" name ="description"></textarea>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="password"><b>Parola</b></label>
+          <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched 
+          && form.get('password').invalid}" placeholder="parola" [(ngModel)] = "user.password" name ="password">
+          <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('password').errors.required">Necesar o parola!</div>
+              <div *ngIf="form.get('password').errors.minlength">Necesita o parola de minim 6 caractere</div>
+              <div *ngIf="form.get('password').errors.pattern">Necesita parola ce sa contina minim o litere mica, mare si o cifra!</div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="confpassword"><b>Confirma Parola</b></label>
+            <input type="password" class="form-control" formControlName="confpassword" [ngClass]="{'is-invalid':form.get('confpassword').touched 
+            && form.get('confpassword').invalid}" placeholder="parola" >
+            <div *ngIf="form.get('confpassword').touched && form.get('confpassword').invalid" class="invalid-feedback">
+                <div *ngIf="form.get('confpassword').errors.required">Necesar o parola!</div>
+                <div *ngIf="form.get('confpassword').errors.minlength">Necesita o parola de minim 6 caractere</div>
+                <div *ngIf="form.get('confpassword').errors.pattern">Necesita parola ce sa contina minim o litere mica, mare si o cifra!</div>
+                <div *ngIf="form.get('confpassword').values == form.get('password').values">
+                  <p>Vezi ca nu s egale</p>
+                </div>
+              </div>
+          </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" (click) = "checkBox()">
+        <label class="form-check-label" for="gridCheck">
+          Sunt de acord sa creez un nou utilizator cu credentialele de mai sus
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" routerLink="/utilizatori" [disabled]="!booleanCheckBox" (click) = "addUser()">Crează</button>
+  </form>
+</div>
+</div>

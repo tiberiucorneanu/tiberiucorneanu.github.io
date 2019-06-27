@@ -1,0 +1,133 @@
+<!--reparare temporala scrollbar-->
+<div style="height: 615px;overflow-y: scroll;">
+  <!--Mesajul de intampinare-->
+  <div class="card" style=" text-align: center;">
+    <div class="card-body">
+      <h5 class="card-title" style=" text-align: center;">Medii virtuale</h5>
+      <p class="card-text" style="text-align: center;">In aceasta pagina sunt listate toate masinile virtuale.</p>
+      <a routerLink="/environment/new" class="btn btn-primary">Crează o nouă mașină virtuală</a>
+    </div>
+  </div>
+  <!--Lista de enviromente-->
+  <div class="center">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion" id="accordionExample">
+        <div class="card" *ngFor = "let environment of environments">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                NumeMV: {{environment.name}}
+                <!--<div class="blink_me" style="text-align: right"><p>StatusVM: <font color="green"><b>Running</b></font></p></div> -->
+              </button>
+            </h5>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label><b>Utilizator: </b>{{environment.userID}}</label>
+                  </div>
+                  <div class="form-group col-md-6" style="text-align: right">
+                    <div class="blink_me" style="text-align: right"><p>StatusVM: <font color="green"><b>{{environment.status}}</b></font></p></div>
+                  </div>
+              </div>
+              <div class="form-group ">
+                  <label><b>Descriere: </b>{{environment.description}}</label>
+              </div>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary" (click) = onSelectEnvironment(environment)>Editează</button>
+                    <button type="button" class="btn btn-secondary" role="button" data-toggle="modal" data-target="#envGenericPopup" (click) = "evironmentToDelete(environment)" data-target="#evironmentStergePopup">ȘtergeVM</button>
+                    <button type="button" class="btn btn-secondary" role="button" data-toggle="modal" data-target="#envGenericPopup" (click) = "evironmentToStart(environment)" >StartVM</button>
+                    <button type="button" class="btn btn-secondary" role="button" data-toggle="modal" data-target="#envGenericPopup" (click) = "evironmentToStop(environment)">StopVM</button>
+                    <button type="button" class="btn btn-secondary" role="button" data-toggle="modal" data-target="#envGenericPopup">Reexecutare</button>
+                    <button type="button" class="btn btn-secondary" role="button" data-toggle="modal" data-target="#envGenericPopup" (click) = "evironmentToScallUP(environment)">ScallUP</button>
+              </div>
+              <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label><b>Sistem de Operare: </b>{{environment.vm_box}}</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label><b>Memorie: </b>{{environment.memori}}</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label><b>CPU: </b>{{environment.cpu}}</label>
+                    </div>
+              </div>
+
+              <div class="form-group ">
+                    <label><b>Lista Aplicatii:</b>
+                      <p>Baza de date</p>
+                      <p>Apache</p>
+                      <p>MySql</p>
+                    </label>
+              </div>
+            <!--card-body-->
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                NumeMV: Test Vm 3
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                NumeMV: TibiTest Vm 2
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!--Inchide center-->
+  </div>
+
+
+  <!--Inceput POP UP-->
+  <div id="evironmentStergePopup" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" style="font-size: 14px !important;">Sterge {{environmentNeededToDelete.name}}</h2>
+          <button type="button" class="close" aria-label="Close" data-dismiss="modal" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="p-popup" style="white-space: pre-line !important; text-align: justify;"></p>
+          <strong><label class="confirm-checkbox" >
+            <input type="checkbox" class="btn btn-primary" [(ngModel)]="modalActionConfirmed" style="margin-top: 10px !important;">Sunt de acord sa sterg masina virtuala.
+            <span class="checkmark-checkbox"></span>
+          </label></strong>
+        </div>
+        <div class="modal-footer" >
+          <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="!modalActionConfirmed" (click) = "deleteEnvironment()" >Confirm</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!--inchide pop UP-->
+  </div>
+
+  <!--Inchide scroll ar-->
+</div>

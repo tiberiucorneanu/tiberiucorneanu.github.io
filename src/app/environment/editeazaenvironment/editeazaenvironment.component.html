@@ -1,0 +1,55 @@
+<!--reparare temporala scrollbar-->
+<div style="height: 615px;overflow-y: scroll;">
+  <!--Mesajul de intampinare-->
+  <div class="card" style=" text-align: center;">
+    <div class="card-body">
+      <h5 class="card-title" style=" text-align: center;">Editeaza masina virtuala {{environmentId.name}}</h5>
+      <p class="card-text" style="text-align: center;">Pe baza formularuluiului de mai jos puteti edita masina virtuala.</p>
+    </div>
+  </div>
+<div class="center">
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label><b>NumeVM</b></label>
+      <input type="text" class="form-control"  value="{{environmentId.name}}" [(ngModel)] = "environmentId.name" name = "name">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="exampleFormControlSelect1"><b>Sistem de operare</b></label>
+        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)] = "environmentId.vm_box" name="vm_box">
+            <option value="" disabled selected>Alege sistemul de operare</option>
+            <option value="Linux">Linux</option>
+            <option value="Ubuntu">Ubuntu</option>
+            <option value="Windows">Windows</option>
+        </select>
+    </div>
+  <!--inchide linia 2-->  
+  </div>  
+  <div class="form-row">
+      <div class="form-group col-md-6">
+        <label><b>Memorie</b></label>
+        <input type="emaiUtilizator" class="form-control"  value="{{environmentId.memori}}" [(ngModel)] = "environmentId.memori" name = "memori">
+      </div>
+      <div class="form-group col-md-6">
+        <label><b>CPU</b></label>
+        <input type="grupaSeriaUtilizator" class="form-control"  value="{{environmentId.cpu}}" [(ngModel)] = "environmentId.cpu" name = "cpu">
+      </div>
+  <!--inchide linia 2-->
+  </div>  
+  <div class="form-group ">
+      <label><b>Descriere</b></label>
+      <textarea id="form10" class="md-textarea form-control"  value="{{environmentId.description}}" [(ngModel)] = "environmentId.description" name="description" rows="3"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" (click) = "checkBox()">
+      <label class="form-check-label" for="gridCheck">
+        Sunt de acord cu noile schimbari din masina virtuala.
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" routerLink="/environment" [disabled]="!booleanCheckBox" (click) = "updateEnvironment(environmentId)">Actualizeaza</button>
+</form>
+</div>
+</div>

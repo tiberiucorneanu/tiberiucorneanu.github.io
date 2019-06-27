@@ -1,0 +1,94 @@
+<!--reparare temporala scrollbar-->
+<div style="height: 615px;overflow-y: scroll;">
+  <!--Mesajul de intampinare-->
+  <div class="card" style=" text-align: center;">
+    <div class="card-body">
+      <h5 class="card-title" style=" text-align: center;">Utilizatori</h5>
+      <p class="card-text" style="text-align: center;">In această pagină sunt listatați utilizatorii mașinilor virtuale.</p>
+      <a routerLink="/utilizatori/new" class="btn btn-primary">Crează un nou utilizator</a>
+    </div>
+  </div>
+
+  <!--table bootstrap-->
+  <div class="center">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion" id="accordionExample" > 
+      
+        <div class="card" *ngFor = "let user of users">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Utilizaror: {{user.email}}
+              </button>
+            </h5>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label><b>Nume: </b>{{user.firstName}}</label>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label><b>Prenume: </b>{{user.lastName}}</label>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label><b>Grupa si Seria: </b>{{user.grupaSerie}}</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label><b>Descriere: </b>{{user.description}}</label>
+                </div>
+                <div class="form-group">
+                  <label><b>Tocken: </b>{{On to do list}</label>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <a class="btn btn-secondary" (click) = onSelectUser(user)>Editează utilizator</a>
+                  <button type="button" class="btn btn-secondary" role="button" data-toggle="modal" (click) = "userToDelete(user)" data-target="#utilizatorStergePopup">Șterge utilizator</button>    
+                </div>
+            </div> <!--colapsOne-->
+          </div>
+        </div><!--inchide card-->
+      </div>
+    </div>
+  </div><!--inchide centrarea in pagina-->
+
+
+  <!--Inceput POP UP-->
+  <div id="utilizatorStergePopup" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" style="font-size: 14px !important;">Sterge Utilizator</h2>
+          <button type="button" class="close" aria-label="Close" data-dismiss="modal" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="p-popup" style="white-space: pre-line !important; text-align: justify;"></p>
+          <strong><label class="confirm-checkbox" >
+            <input type="checkbox" class="btn btn-primary" [(ngModel)]="modalActionConfirmed" style="margin-top: 10px !important;">Ei bine esti sigur?
+            <span class="checkmark-checkbox"></span>
+          </label></strong>
+        </div>
+        <div class="modal-footer" >
+          <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="!modalActionConfirmed" (click) = "deleteUser()">Confirm</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Paginarea stanga dreapta-->
+  <div  class="container mt-5">
+    <nav aria-label="User list pagination">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled"><a class="page-link" href="#">Pag. următoare</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#">Pag. anterioare</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+<!--inchide scroll bar-->
+</div>

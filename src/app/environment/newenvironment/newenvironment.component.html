@@ -1,0 +1,166 @@
+<!--reparare temporala scrollbar-->
+<div style="height: 615px;overflow-y: scroll;">
+  <!--Mesajul de intampinare-->
+  <div class="card" style=" text-align: center;">
+    <div class="card-body">
+      <h5 class="card-title" style=" text-align: center;">Creaza o Masina Virtuala</h5>
+      <p class="card-text" style="text-align: center;">Pe baza formularuluiului de mai jos puteti crea o noua masina virtuala.</p>
+    </div>
+  </div>
+
+  <div class="center">
+    <form name="form" [formGroup]="form">
+        <div class="form-row"> 
+            <div class="form-group col-md-6">
+              <label for="nameVM">NumeVM</label>
+              <input type="text" class="form-control" formControlName="nameVM" [ngClass]="{'is-invalid':form.get('nameVM').touched 
+            && form.get('nameVM').invalid}" placeholder="Calculator2" [(ngModel)] = "environment.name" name = "name" required>
+              <div *ngIf="form.get('nameVM').touched && form.get('nameVM').invalid" class="invalid-feedback">
+                <div *ngIf="form.get('nameVM').errors.required">Necesar un nume de VM!</div>
+                <div *ngIf="form.get('nameVM').errors.minlength">Necesita un nume de minim 3 caractere</div>
+                <div *ngIf="form.get('nameVM').errors.pattern">Necesita un nume ce poate contine numai caractere mici, mari si numere!</div>
+              </div>
+
+            </div>
+            <div class="form-group col-md-6">
+              <label for="nameVM">Sistemul de operare</label>
+              <select input type="text" class="form-control" formControlName="vm_box" [ngClass]="{'is-invalid':form.get('vm_box').touched 
+              && form.get('vm_box').invalid}" placeholder="Linux" [(ngModel)] = "environment.vm_box" name="vm_box" required>
+                <option value="linux">Linux</option>
+                <option value="ubuntu">Ubuntu</option>
+                <option value="debian">Debian</option>
+              </select>
+              <div *ngIf="form.get('vm_box').touched && form.get('vm_box').invalid" class="invalid-feedback">
+                  <div *ngIf="form.get('vm_box').errors.required">Necesar un Sistem de operare!</div>
+              </div>
+              <!-- <input type="text" class="form-control" formControlName="vm_box" [ngClass]="{'is-invalid':form.get('vm_box').touched 
+              && form.get('vm_box').invalid}" placeholder="Linux" [(ngModel)] = "environment.vm_box" name="vm_box" required>
+              <div *ngIf="form.get('vm_box').touched && form.get('vm_box').invalid" class="invalid-feedback">
+                  <div *ngIf="form.get('vm_box').errors.required">Necesar un Sistem de operare!</div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="form-row"> 
+            <!-- <div class="form-group col-md-6">
+              <label for="memorie">Memorie</label>
+              <input type="text" class="form-control" formControlName="memorie" [ngClass]="{'is-invalid':form.get('memorie').touched 
+            && form.get('memorie').invalid}" placeholder="256" [(ngModel)] = "environment.memori" name = "memori" required>
+              <div *ngIf="form.get('memorie').touched && form.get('memorie').invalid" class="invalid-feedback">
+                  <div *ngIf="form.get('memorie').errors.required">Necesar o memorie de lucru pentru VM!</div>
+                  <div *ngIf="form.get('memorie').errors.pattern">Memoria poate sa contina numai numere!</div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="cpu">CPU</label>
+              <input type="text" class="form-control" formControlName="cpu" [ngClass]="{'is-invalid':form.get('cpu').touched 
+              && form.get('cpu').invalid}" placeholder="3" [(ngModel)] = "environment.cpu" name="cpu" required>
+              <div *ngIf="form.get('cpu').touched && form.get('cpu').invalid" class="invalid-feedback">
+                  <div *ngIf="form.get('cpu').errors.required">Necesar nr de CPU pt VM!</div>
+                  <div *ngIf="form.get('cpu').errors.pattern">CPU poate sa contina numai numere!</div>
+              </div>
+            </div> -->
+            <div class="form-group col-md-6">
+                <label for="memori">Memoria</label>
+                <select input type="text" class="form-control" formControlName="memori" [ngClass]="{'is-invalid':form.get('memori').touched 
+                && form.get('memori').invalid}" placeholder="Linux" [(ngModel)] = "environment.memori" name="memori" required>
+                  <option value="1">1</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="75">75</option>
+                  <option value="100">100</option>
+                  <option value="125">125</option>
+                  <option value="150">150</option>
+                  <option value="175">175</option>
+                  <option value="200">200</option>
+                  <option value="225">225</option>
+                  <option value="250">250</option>
+                </select>
+                <div *ngIf="form.get('memori').touched && form.get('memori').invalid" class="invalid-feedback">
+                    <div *ngIf="form.get('memori').errors.required">Necesar un memori de operare!</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="cpu">CPU</label>
+                  <select input type="text" class="form-control" formControlName="cpu" [ngClass]="{'is-invalid':form.get('cpu').touched 
+                  && form.get('cpu').invalid}" placeholder="Linux" [(ngModel)] = "environment.cpu" name="cpu" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                  <div *ngIf="form.get('cpu').touched && form.get('cpu').invalid" class="invalid-feedback">
+                      <div *ngIf="form.get('cpu').errors.required">Necesar un cpu de operare!</div>
+                  </div>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="descriere"><b>Descriere</b></label>
+            <textarea type="text" class="md-textarea form-control" formControlName="descriere" [ngClass]="{'is-invalid':form.get('descriere').touched 
+            && form.get('descriere').invalid}" placeholder="Descriere masina virtuala..." rows="3" [(ngModel)] = "environment.description" name ="description"></textarea>
+            <div class="invalid-feedback">
+                Necesar o descriere de VM!
+            </div>
+        </div> 
+        <div class = "form-group">
+            <div class=" custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1" (click) = "checkBox()">Sunt de acord sa creez o noua masina virtuala.</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" routerLink="/environment" [disabled]="!booleanCheckBox" (click) = "addEnvironment()">Crează</button>
+    </form>
+  </div>
+         
+<!-- 
+      <form name = "formEnvironment" [formGroup] = "formEnvironment">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="firstName"><b>NumeVM:</b></label>
+            <input type="text" class="form-control" formControlName="firstName" 
+            [ngClass]="{'is-invalid':form.get('firstName').touched && form.get('firstName').invalid}" placeholder="Calculator 2" [(ngModel)] = "environment.name" name = "name" required/>
+            <div class="invalid-feedback">
+              <div>Este necesar un nume pentru VM</div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+              <label for="exampleFormControlSelect1"><b>Sistem de operare</b></label>
+              <select class="form-control" id="exampleFormControlSelect1" [(ngModel)] = "environment.vm_box" name="vm_box">
+                  <option value="" selected disabled>Alege sistemul de operare</option>
+                  <option value="Linux">Linux</option>
+                  <option value="Ubuntu">Ubuntu</option>
+                  <option value="Windows">Windows</option>
+              </select>
+          </div>
+        <!--inchide linia 2-->  
+        <!-- </div>  
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label><b>Memorie</b></label>
+              <input type="emaiUtilizator" class="form-control"  placeholder="256" [(ngModel)] = "environment.memori" name = "memori">
+            </div>
+            <div class="form-group col-md-6">
+              <label><b>CPU</b></label>
+              <input type="grupaSeriaUtilizator" class="form-control"  placeholder="3" [(ngModel)] = "environment.cpu" name ="cpu">
+            </div> -->
+        <!--inchide linia 2-->
+        <!-- </div>  
+        <div class="form-group ">
+            <label><b>Descriere</b></label>
+            <textarea id="form10" class="md-textarea form-control"  placeholder="Descriere masina virtuala..." rows="3" [(ngModel)] = "environment.description" name ="description"></textarea>
+        </div>
+
+        <div class = "form-group">
+          <div class=" custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1" (click) = "checkBox()">Sunt de acord sa creez o noua masina virtuala.</label>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" routerLink="/environment" [disabled]="!booleanCheckBox" (click) = "addEnvironment()">Creaza</button>
+      </form>
+    </div> --> 
+</div>

@@ -1,0 +1,36 @@
+<header>
+  <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavWrapper" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">VMPlatform</a>
+    <div class="collapse navbar-collapse" id="navbarNavWrapper">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/environment">Medii Virtuale<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/utilizatori">Utilizatori</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routerLink="/documentatie">Documentație</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+</header>
+ 
+<body>
+
+    <router-outlet></router-outlet>
+    
+</body>
+
+
+<footer class="bottom-footer bg-inverse text-white" >
+  <div class="row" style="margin-left: 0px !important; margin-right: 0px !important;">
+    <div class="col pt-3 pb-3" style="padding: 10px!important;">Corneanu Tiberiu Cristian &copy;  UPB, ETTI 2019</div>
+    <div class="col pt-3 pb-3 text-right" style="padding: 10px!important;"><a href="mailto:tiberiu.corneanu@stud.etti.upb.ro?Subject=Se%20cere%20ajutor%20cu%20privire%20la:" target="_top" style="color: #fff !important; text-decoration:none;">Contact</a></div>
+  </div>
+</footer>
