@@ -24,7 +24,7 @@
 						"clipboard": "^1.6.1",
 						"core-js": "^2.4.1",
 						"highlightjs": "9.10.0",
-						"jquery": "^3.4.0",
+						"jquery": "^3.5.0",
 						"js-yaml": "3.12.0",
 						"ngx-bootstrap": "^4.1.1",
 						"npm": "^6.9.0",
